@@ -15,15 +15,16 @@ while i > 0
 	when "n"
 		case port
 		when 1 or 10
-			pragma << "#pragma config(Motor, port#{port}, #{name}, tmotorVex393, openLoop)\n"
+			pragma << "#pragma config(Motor, #{port}, #{name}, tmotorVex393_HBridge, openLoop)\n"
 		else
-			
+			pragma << "#pragma config(Motor, #{port}, #{name}, tmotorVex393_MC29, openLoop)\n"
 		end
 	when "y"
 		case port
 		when 1 or 10
-			pragma << "#pragma config(Motor, port#{port}, #{name}, tmotorVex393, openLoop)\n" # need to add reverse part
+			pragma << "#pragma config(Motor, #{port}, #{name}, tmotorVex393_HBridge, openLoop, reversed)\n"
 		else
+			pragma << "#pragma config(Motor, #{port}, #{name}, tmotorVex393_MC29, openLoop, reversed)\n"
 		end
 	end
 	i = i - 1
@@ -31,3 +32,5 @@ end
 
 
 body << "\t}\n}"
+code << pragma
+code << body
