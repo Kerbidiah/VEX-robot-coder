@@ -59,7 +59,7 @@ code << pragma
 code << body
 
 i = 0
-while exist?("autocoded#{i.to_s}.c")
+while File.exist?("autocoded#{i.to_s}.c")
 	i += 1
 end
 
