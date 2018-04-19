@@ -14,14 +14,14 @@ while i > 0
 	case gets.chomp
 	when "n"
 		case port
-		when 1 or 10
+		when 1, 10
 			pragma << "#pragma config(Motor, port#{port}, #{name}, tmotorVex393_HBridge, openLoop)\n"
 		else
 			pragma << "#pragma config(Motor, port#{port}, #{name}, tmotorVex393_MC29, openLoop)\n"
 		end
 	when "y"
 		case port
-		when 1 or 10
+		when 1, 10
 			pragma << "#pragma config(Motor, port#{port}, #{name}, tmotorVex393_HBridge, openLoop, reversed)\n"
 		else
 			pragma << "#pragma config(Motor, port#{port}, #{name}, tmotorVex393_MC29, openLoop, reversed)\n"
@@ -49,7 +49,7 @@ while i > 0
 
 	body << "Xmtr2" if remote == 2
 	body << ");\n"
-	
+	print "\n"
 	i -= 1
 end
 
@@ -66,3 +66,4 @@ end
 PROGNAME = "autocoded#{i.to_s}.c"
 File.new(PROGNAME, "w")
 File.write(PROGNAME, code)
+print "\n"
