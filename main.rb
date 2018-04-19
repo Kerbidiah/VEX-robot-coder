@@ -50,10 +50,19 @@ while i > 0
 	body << "Xmtr2" if remote == 2
 	body << ");\n"
 	
-	i = i - 1
+	i -= 1
 end
 
 
 body << "\t}\n}"
 code << pragma
 code << body
+
+i = 0
+while exist?("autocoded#{i.to_s}.c")
+	i += 1
+end
+
+PROGNAME = "autocoded#{i.to_s}.c"
+File.new(PROGNAME, "w")
+File.write(PROGNAME, code)
